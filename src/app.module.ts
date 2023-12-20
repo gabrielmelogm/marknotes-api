@@ -2,8 +2,7 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { env } from '../env'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
+import { NotesModule } from './app/notes/notes.module'
 
 @Module({
 	imports: [
@@ -18,8 +17,9 @@ import { AppService } from './app.service'
 			entities: [`${__dirname}/**/*.entity{.js,.ts}`],
 			synchronize: env.NODE_ENV === 'development',
 		}),
+		NotesModule,
 	],
-	controllers: [AppController],
-	providers: [AppService],
+	controllers: [],
+	providers: [],
 })
 export class AppModule {}

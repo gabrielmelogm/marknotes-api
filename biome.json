@@ -7,6 +7,9 @@
 		"formatter": {
 			"semicolons": "asNeeded",
 			"quoteStyle": "single"
+		},
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
 		}
 	},
 	"linter": {
@@ -15,6 +18,9 @@
 			"recommended": true,
 			"suspicious": {
 				"noExplicitAny": "warn"
+			},
+			"complexity": {
+				"noStaticOnlyClass": "off"
 			}
 		}
 	}
