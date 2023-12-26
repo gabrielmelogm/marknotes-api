@@ -1,30 +1,30 @@
-import { UsersEntity } from 'src/app/users/entities/users.entity'
+import { NotesEntity } from 'src/app/notes/entities/notes.entity'
 import {
 	Column,
 	CreateDateColumn,
 	DeleteDateColumn,
 	Entity,
-	ManyToOne,
+	OneToMany,
 	PrimaryGeneratedColumn,
 	UpdateDateColumn,
 } from 'typeorm'
 
-@Entity({ name: 'notes' })
-export class NotesEntity {
+@Entity('users')
+export class UsersEntity {
 	@PrimaryGeneratedColumn('uuid')
 	id: string
 
-	@Column({ name: 'title' })
-	title: string
+	@Column({ name: 'name' })
+	name: string
 
-	@Column({ name: 'content', type: 'text' })
-	content: string
+	@Column({ name: 'email', unique: true })
+	email: string
 
-	@ManyToOne(
-		() => UsersEntity,
-		(user) => user.notes,
+	@OneToMany(
+		() => NotesEntity,
+		(notes) => notes.user,
 	)
-	user: UsersEntity
+	notes: NotesEntity[]
 
 	@CreateDateColumn({ name: 'created_at' })
 	createdAt: string

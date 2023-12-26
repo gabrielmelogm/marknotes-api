@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { env } from '../env'
 import { NotesModule } from './app/notes/notes.module'
+import { UsersModule } from './app/users/users.module';
 
 @Module({
 	imports: [
@@ -18,6 +19,7 @@ import { NotesModule } from './app/notes/notes.module'
 			synchronize: env.NODE_ENV === 'development',
 		}),
 		NotesModule,
+		UsersModule,
 	],
 	controllers: [],
 	providers: [],

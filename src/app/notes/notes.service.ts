@@ -17,7 +17,13 @@ export class NotesService {
 	}
 
 	async store(data: CreateNoteDto) {
-		return await this.notesRepository.save(data)
+		return await this.notesRepository.save({
+			title: data.title,
+			content: data.content,
+			user: {
+				id: data.userId,
+			},
+		})
 	}
 
 	async update(id: string, data: UpdateNoteDto) {
