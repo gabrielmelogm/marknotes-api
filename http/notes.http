@@ -1,4 +1,5 @@
 @apiUrl = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOGFmMWM4OC02NDFhLTRhYzUtYTg3YS02Yjg0MDI4YzM3ZWIiLCJlbWFpbCI6Im1lbG9nb25jYWx2ZXNiaWVsQGdtYWlsLmNvbSIsImlhdCI6MTcwMzcxNTk4NCwiZXhwIjoxNzAzNzE2MDQ0fQ.0-BqPebsXXSYIyOoJouTKu35wSuL3e7n51Mj7UFjhnw
 
 ### Get one note
 
@@ -8,11 +9,12 @@ GET {{apiUrl}}/notes/f981fe08-4a11-4a2d-8ad1-4c4414010979
 
 POST {{apiUrl}}/notes
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "title": "Nova nota",
   "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
-  "userId": "58d12311-cd6c-4d2b-bc0a-564ee0d3a87f"
+  "userId": "758cb0f6-a0fc-4a6b-bcb5-4b26521f10fe"
 }
 
 ### Update note

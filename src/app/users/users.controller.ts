@@ -7,12 +7,15 @@ import {
 	Param,
 	Post,
 	Put,
+	UseGuards,
 } from '@nestjs/common'
+import { AuthGuard } from '@nestjs/passport'
 import { CreateUserDto } from './dto/createUser.dto'
 import { UpdateUserDto } from './dto/updateUser.dto'
 import { UsersService } from './users.service'
 
 @Controller('users')
+@UseGuards(AuthGuard('jwt'))
 export class UsersController {
 	constructor(private readonly usersService: UsersService) {}
 

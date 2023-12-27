@@ -1,4 +1,5 @@
 @apiUrl = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOGFmMWM4OC02NDFhLTRhYzUtYTg3YS02Yjg0MDI4YzM3ZWIiLCJlbWFpbCI6Im1lbG9nb25jYWx2ZXNiaWVsQGdtYWlsLmNvbSIsImlhdCI6MTcwMzcxNTk4NCwiZXhwIjoxNzAzNzE2MDQ0fQ.0-BqPebsXXSYIyOoJouTKu35wSuL3e7n51Mj7UFjhnw
 
 ### Get user
 
@@ -8,6 +9,7 @@ GET {{apiUrl}}/users/melogoncalvesbiel@gmail.com
 
 POST {{apiUrl}}/users
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "John Doe",
