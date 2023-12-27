@@ -16,6 +16,8 @@ function requiredOnEnv(env: z.infer<typeof nodeEnv>) {
 }
 
 const envSchema = z.object({
+	JWT_KEY: z.string(),
+	SESSION_EXPIRES: z.string(),
 	NODE_ENV: nodeEnv.default('development'),
 	TYPEORM_CONNECTION: z.enum(['postgres']),
 	TYPEORM_HOST: z.string(),
