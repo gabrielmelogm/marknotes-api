@@ -15,6 +15,16 @@ export class NotesService {
 		private readonly userService: UsersService,
 	) {}
 
+	async findAll(userId: string): Promise<NotesEntity[]> {
+		return await this.notesRepository.find({
+			where: {
+				user: {
+					id: userId,
+				},
+			},
+		})
+	}
+
 	async findOne(options: FindOneOptions<NotesEntity>) {
 		return await this.notesRepository.findOneOrFail(options)
 	}

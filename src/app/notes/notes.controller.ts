@@ -24,6 +24,11 @@ import { NotesService } from './notes.service'
 export class NotesController {
 	constructor(private readonly notesService: NotesService) {}
 
+	@Get()
+	async findAll(@Req() req: ReqUserLogin) {
+		return await this.notesService.findAll(req.user.id)
+	}
+
 	@Get(':id')
 	async show(@Param('id', new ParseUUIDPipe()) id: string) {
 		try {
