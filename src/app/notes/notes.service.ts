@@ -19,8 +19,8 @@ export class NotesService {
 		return await this.notesRepository.findOneOrFail(options)
 	}
 
-	async store(data: CreateNoteDto) {
-		const user = await this.userService.findOne({ where: { id: data.userId } })
+	async store(data: CreateNoteDto, userId: string) {
+		const user = await this.userService.findOne({ where: { id: userId } })
 
 		if (!user) throw new Error(MessagesHelper.USER_NOT_FOUND)
 
@@ -28,7 +28,7 @@ export class NotesService {
 			title: data.title,
 			content: data.content,
 			user: {
-				id: data.userId,
+				id: userId,
 			},
 		})
 

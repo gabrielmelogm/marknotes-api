@@ -10,9 +10,11 @@ import {
 	ParseUUIDPipe,
 	Post,
 	Put,
+	Req,
 	UseGuards,
 } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
+import { ReqUserLogin } from '../auth/@types/userHeader'
 import { CreateNoteDto } from './dto/createNote.dto'
 import { UpdateNoteDto } from './dto/updateNote.dto'
 import { NotesService } from './notes.service'
@@ -36,8 +38,14 @@ export class NotesController {
 	}
 
 	@Post()
-	async store(@Body() data: CreateNoteDto) {
-		return await this.notesService.store(data)
+	async store(@Body() data: CreateNoteDto, @Req() req: ReqUserLogin) {
+		return await this.notesService.store(
+			{
+				title: data.title,
+				content: data.content,
+			},
+			req.user.id,
+		)
 	}
 
 	@Put(':id')

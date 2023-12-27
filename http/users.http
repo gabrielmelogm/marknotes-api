@@ -12,7 +12,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "John Doe",
+  "name": "Gabriel Melo",
   "email": "melogoncalvesbiel@gmail.com",
   "password": "Gabriel@123"
 }
@@ -21,7 +21,8 @@ Authorization: Bearer {{token}}
 
 PUT {{apiUrl}}/users/melogoncalvesbiel@gmail.com
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
-  "name": "Gabriel Melo"
+  "name": "John Doe"
 }

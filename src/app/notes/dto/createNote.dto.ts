@@ -6,7 +6,4 @@ export class CreateNoteDto {
 
 	@IsNotEmpty()
 	content: string
-
-	@IsUUID()
-	userId: string
 }
