@@ -1,0 +1,24 @@
+@apiUrl = http://localhost:3000
+
+### Get user
+
+GET {{apiUrl}}/users/melogoncalvesbiel@gmail.com
+
+### Create user
+
+POST {{apiUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "melogoncalvesbiel@gmail.com"
+}
+
+### Update user
+
+PUT {{apiUrl}}/users/melogoncalvesbiel@gmail.com
+Content-Type: application/json
+
+{
+  "name": "Gabriel Melo"
+}

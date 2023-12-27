@@ -1,0 +1,30 @@
+@apiUrl = http://localhost:3000
+
+### Get one note
+
+GET {{apiUrl}}/notes/f981fe08-4a11-4a2d-8ad1-4c4414010979
+
+### Create note
+
+POST {{apiUrl}}/notes
+Content-Type: application/json
+
+{
+  "title": "Nova nota",
+  "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
+  "userId": "58d12311-cd6c-4d2b-bc0a-564ee0d3a87f"
+}
+
+### Update note
+
+PUT {{apiUrl}}/notes/f981fe08-4a11-4a2d-8ad1-4c4414010979
+Content-Type: application/json
+
+{
+  "title": "Nota antiga",
+  "content": "A short text"
+}
+
+### Delete one note
+
+DELETE {{apiUrl}}/notes/f981fe08-4a11-4a2d-8ad1-4c4414010979
