@@ -11,7 +11,8 @@ Content-Type: application/json
 
 {
   "name": "John Doe",
-  "email": "melogoncalvesbiel@gmail.com"
+  "email": "melogoncalvesbiel@gmail.com",
+  "password": "Gabriel@123"
 }
 
 ### Update user

@@ -27,7 +27,8 @@ export class UsersService {
 	async store(data: CreateUserDto) {
 		const user = await this.findByEmail(data.email)
 		if (user) throw new Error('User already exists')
-		return await this.usersRepository.save(data)
+		const newUser = await this.usersRepository.create(data)
+		return await this.usersRepository.save(newUser)
 	}
 
 	async update(email: string, data: UpdateUserDto) {

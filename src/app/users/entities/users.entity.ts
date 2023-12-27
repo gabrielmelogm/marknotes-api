@@ -1,5 +1,7 @@
+import { hashSync } from 'bcrypt'
 import { NotesEntity } from 'src/app/notes/entities/notes.entity'
 import {
+	BeforeInsert,
 	Column,
 	CreateDateColumn,
 	DeleteDateColumn,
@@ -14,14 +16,14 @@ export class UsersEntity {
 	@PrimaryGeneratedColumn('uuid')
 	id: string
 
-	@Column({ name: 'name' })
+	@Column()
 	name: string
 
-	@Column({ name: 'email', unique: true })
+	@Column({ unique: true })
 	email: string
 
-	// @Column({ name: 'password' })
-	// password: string
+	@Column()
+	password: string
 
 	@OneToMany(
 		() => NotesEntity,
@@ -37,4 +39,9 @@ export class UsersEntity {
 
 	@DeleteDateColumn({ name: 'deleted_at' })
 	deletedAt: string
+
+	@BeforeInsert()
+	hashPassword() {
+		this.password = hashSync(this.password, 10)
+	}
 }

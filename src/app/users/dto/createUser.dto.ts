@@ -1,4 +1,5 @@
-import { IsEmail, IsNotEmpty } from 'class-validator'
+import { IsEmail, IsNotEmpty, Matches } from 'class-validator'
+import { RegExHelper } from 'src/helpers/regex.helper'
 
 export class CreateUserDto {
 	@IsNotEmpty()
@@ -7,4 +8,10 @@ export class CreateUserDto {
 	@IsEmail()
 	@IsNotEmpty()
 	email: string
+
+	@IsNotEmpty()
+	@Matches(RegExHelper.password, {
+		message: 'The password must be 8 caracteres',
+	})
+	password: string
 }

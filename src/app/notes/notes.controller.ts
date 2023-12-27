@@ -3,6 +3,7 @@ import {
 	Controller,
 	Delete,
 	Get,
+	HttpCode,
 	HttpException,
 	HttpStatus,
 	Param,
@@ -45,6 +46,7 @@ export class NotesController {
 	}
 
 	@Delete(':id')
+	@HttpCode(HttpStatus.NO_CONTENT)
 	async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
 		return await this.notesService.destroy({
 			id,
