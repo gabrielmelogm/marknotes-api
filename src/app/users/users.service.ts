@@ -30,8 +30,8 @@ export class UsersService {
 		return await this.usersRepository.save(data)
 	}
 
-	async update(id: string, data: UpdateUserDto) {
-		const user = await this.findOne({ where: { id } })
+	async update(email: string, data: UpdateUserDto) {
+		const user = await this.findByEmail(email)
 		this.usersRepository.merge(user, data)
 		return await this.usersRepository.save(user)
 	}

@@ -5,7 +5,6 @@ import {
 	HttpException,
 	HttpStatus,
 	Param,
-	ParseUUIDPipe,
 	Post,
 	Put,
 } from '@nestjs/common'
@@ -17,14 +16,10 @@ import { UsersService } from './users.service'
 export class UsersController {
 	constructor(private readonly usersService: UsersService) {}
 
-	@Get(':id')
-	async show(@Param('id', new ParseUUIDPipe()) id: string) {
+	@Get(':email')
+	async show(@Param('email') email: string) {
 		try {
-			return await this.usersService.findOne({
-				where: {
-					id,
-				},
-			})
+			return await this.usersService.findByEmail(email)
 		} catch (error) {
 			return new HttpException('User was not found', HttpStatus.BAD_REQUEST)
 		}
@@ -32,14 +27,15 @@ export class UsersController {
 
 	@Post()
 	async store(@Body() data: CreateUserDto) {
-		return await this.usersService.store(data)
+		try {
+			return await this.usersService.store(data)
+		} catch (error) {
+			return new HttpException(error?.message, HttpStatus.BAD_REQUEST)
+		}
 	}
 
-	@Put(':id')
-	async update(
-		@Param('id', new ParseUUIDPipe()) id: string,
-		@Body() data: UpdateUserDto,
-	) {
-		return await this.usersService.update(id, data)
+	@Put(':email')
+	async update(@Param('email') email: string, @Body() data: UpdateUserDto) {
+		return await this.usersService.update(email, data)
 	}
 }

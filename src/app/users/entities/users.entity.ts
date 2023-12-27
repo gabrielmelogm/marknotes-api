@@ -20,6 +20,9 @@ export class UsersEntity {
 	@Column({ name: 'email', unique: true })
 	email: string
 
+	// @Column({ name: 'password' })
+	// password: string
+
 	@OneToMany(
 		() => NotesEntity,
 		(notes) => notes.user,
