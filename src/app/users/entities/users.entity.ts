@@ -1,5 +1,4 @@
 import { hashSync } from 'bcrypt'
-import { NotesEntity } from 'src/app/notes/entities/notes.entity'
 import {
 	BeforeInsert,
 	Column,
@@ -10,6 +9,7 @@ import {
 	PrimaryGeneratedColumn,
 	UpdateDateColumn,
 } from 'typeorm'
+import { NotesEntity } from '../../notes/entities/notes.entity'
 
 @Entity('users')
 export class UsersEntity {
