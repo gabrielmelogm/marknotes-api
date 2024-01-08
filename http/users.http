@@ -13,7 +13,7 @@ Authorization: Bearer {{token}}
 
 {
   "name": "Gabriel Melo",
-  "email": "melogoncalvesbiel@gmail.com",
+  "email": "gabriel@gmail.com",
   "password": "Gabriel@123"
 }
 
